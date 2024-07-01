@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     environment { 
@@ -8,6 +10,14 @@ pipeline {
         choice(name: 'VERSION', choices: ['1.1', '1.2', '1.9'], description: 'Select environment to deploy')
     }
     stages {
+        stage("init") {
+            steps {
+                script {
+                   gv = load "script.groovy" 
+                }
+            }
+        }
+
         stage("build") {
             steps {
                 echo "build process started for ${NAME}"
@@ -25,7 +35,9 @@ pipeline {
                 }
             }
             steps {
-                echo "deploy started for ${params.VERSION}"
+                script {
+                    gv.deployApp()
+                }
             }
         }
     }

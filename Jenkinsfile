@@ -21,7 +21,7 @@ pipeline {
         stage("deploy") {
             when {
                 expression {
-                    BRANCH_NAME == 'test'
+                    BRANCH_NAME == 'dev'
                 }
             }
             steps {

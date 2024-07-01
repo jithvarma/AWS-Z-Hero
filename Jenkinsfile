@@ -34,10 +34,18 @@ pipeline {
                     BRANCH_NAME == 'dev'
                 }
             }
+            input {
+                message "input environment"
+                ok "env selected"
+                parameters {
+                    choice(name: 'environment', choices: ['dev', 'uat', 'prod'], description: 'Select environment to deploy')
+                }
+            }
             steps {
                 script {
                     gv.deployApp()
                 }
+                echo "this also deploy message of ${environment}"
             }
         }
     }

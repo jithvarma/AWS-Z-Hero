@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment { 
         NAME = 'jith'
-        BRANCH_NAME = 'test'
+        BRANCH_NAME = 'dev'
     }
     parameters {
         choice(name: 'VERSION', choices: ['1.1', '1.2', '1.9'], description: 'Select environment to deploy')

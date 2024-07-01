@@ -19,12 +19,12 @@ pipeline {
             }
         }
         stage("deploy") {
-            steps {
-                when {
+            when {
                 expression {
-                    BRANCH_NAME == 'dev'
+                    BRANCH_NAME == 'test'
                 }
             }
+            steps {
                 echo "deploy started for ${params.VERSION}"
             }
         }
